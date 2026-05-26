@@ -1,54 +1,36 @@
-// AppLogo.js
-import React from 'react';
-import Svg, { Path, Circle, Defs, LinearGradient, Stop } from 'react-native-svg';
 
-export const AppLogo = ({ size = 48, variant = 'full' }) => (
-  <Svg width={size} height={variant === 'full' ? size * 0.8 : size} viewBox="0 0 200 160" fill="none">
-    <Defs>
-      <LinearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
-        <Stop offset="0" stopColor="#FFD700"/>
-        <Stop offset="0.5" stopColor="#FF8C00"/>
-        <Stop offset="1" stopColor="#C9A227"/>
-      </LinearGradient>
-      <LinearGradient id="logoGradDark" x1="0" y1="0" x2="1" y2="1">
-        <Stop offset="0" stopColor="#8B0000"/>
-        <Stop offset="1" stopColor="#C9A227"/>
-      </LinearGradient>
-    </Defs>
-    
-    {/* Dragon enroulé */}
-    <Path d="M100 40 C80 40 60 55 55 75 C50 95 60 110 80 115 C100 120 110 135 100 145 C90 155 70 155 55 145" 
-      stroke="url(#logoGrad)" strokeWidth="6" fill="none" strokeLinecap="round"/>
-    
-    {/* Tête du dragon */}
-    <Circle cx="50" cy="75" r="18" fill="url(#logoGrad)"/>
-    <Circle cx="44" cy="70" r="4" fill="#0A0A0F"/>
-    <Circle cx="44.5" cy="69" r="1.5" fill="white"/>
-    <Circle cx="56" cy="70" r="3" fill="#0A0A0F"/>
-    
-    {/* Corne */}
-    <Path d="M42 58 L38 45 L45 55" fill="url(#logoGrad)"/>
-    <Path d="M58 58 L62 45 L55 55" fill="url(#logoGrad)"/>
-    
-    {/* Flamme */}
-    <Path d="M35 80 C30 75 25 85 30 90 C35 95 40 90 35 80Z" fill="#FF4500"/>
-    
-    {/* Épée centrale */}
-    <Path d="M100 40 L100 120" stroke="url(#logoGrad)" strokeWidth="4" strokeLinecap="round"/>
-    <Path d="M85 50 L100 40 L115 50" fill="url(#logoGrad)"/>
-    <Path d="M95 120 L100 135 L105 120" fill="url(#logoGrad)"/>
-    
-    {/* Anneau du bouclier */}
-    <Circle cx="100" cy="80" r="30" stroke="url(#logoGradDark)" strokeWidth="3" fill="none"/>
-    <Circle cx="100" cy="80" r="22" stroke="#FFD700" strokeWidth="1.5" fill="none"/>
-    
-    {variant === 'full' && (
-      <>
-        <Path d="M70 150 L130 150" stroke="url(#logoGrad)" strokeWidth="3" strokeLinecap="round"/>
-        <Path d="M90 155 L110 155" stroke="url(#logoGrad)" strokeWidth="2" strokeLinecap="round"/>
-      </>
-    )}
+import React from 'react';
+import Svg, { Path, Circle, Rect, Ellipse } from 'react-native-svg';
+
+
+export const PotionIcon = ({ size = 32, color = '#FF4444' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path d="M10 4 L14 4 M12 4 L12 7" stroke="#C9A227" strokeWidth="1.5"/>
+    <Path d="M8 7 L16 7 L15 20 L9 20 L8 7Z" fill={color} stroke="#8B0000" strokeWidth="1"/>
+    <Ellipse cx="12" cy="7" rx="4" ry="1.5" fill="#FF6666"/>
+    <Circle cx="10" cy="13" r="1" fill="#FF8888"/>
+    <Circle cx="14" cy="15" r="1" fill="#FF8888"/>
   </Svg>
 );
 
-export default AppLogo;
+
+export const RingIcon = ({ size = 32, color = '#FFD700' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Circle cx="12" cy="12" r="4" stroke={color} strokeWidth="2" fill="none"/>
+    <Circle cx="12" cy="12" r="1.5" fill={color}/>
+    <Path d="M12 8 L12 4 M12 20 L12 16" stroke="#C9A227" strokeWidth="1"/>
+    <Circle cx="12" cy="4" r="1.5" fill="#C9A227"/>
+    <Circle cx="12" cy="20" r="1.5" fill="#C9A227"/>
+  </Svg>
+);
+
+
+export const ScrollIcon = ({ size = 32, color = '#D2B48C' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path d="M6 4 L18 4 L18 20 L6 20 L6 4Z" fill={color} stroke="#8B7355" strokeWidth="1"/>
+    <Path d="M8 7 L16 7 M8 10 L14 10 M8 13 L16 13" stroke="#5C4033" strokeWidth="0.8" strokeLinecap="round"/>
+    <Circle cx="18" cy="12" r="2" fill="#C9A227"/>
+  </Svg>
+);
+
+export default { PotionIcon, RingIcon, ScrollIcon };
