@@ -1,16 +1,54 @@
-export const TrophyIcon = ({ size = 24, color = '#C9A227' }) => (
-  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+// AppLogo.js
+import React from 'react';
+import Svg, { Path, Circle, Defs, LinearGradient, Stop } from 'react-native-svg';
+
+export const AppLogo = ({ size = 48, variant = 'full' }) => (
+  <Svg width={size} height={variant === 'full' ? size * 0.8 : size} viewBox="0 0 200 160" fill="none">
     <Defs>
-      <LinearGradient id="trophyGrad" x1="0" y1="0" x2="0" y2="1">
-        <Stop offset="0" stopColor="#FFD700" />
-        <Stop offset="1" stopColor={color} />
+      <LinearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+        <Stop offset="0" stopColor="#FFD700"/>
+        <Stop offset="0.5" stopColor="#FF8C00"/>
+        <Stop offset="1" stopColor="#C9A227"/>
+      </LinearGradient>
+      <LinearGradient id="logoGradDark" x1="0" y1="0" x2="1" y2="1">
+        <Stop offset="0" stopColor="#8B0000"/>
+        <Stop offset="1" stopColor="#C9A227"/>
       </LinearGradient>
     </Defs>
-    <Path d="M8 3H16V13C16 16.31 14.31 18 12 18C9.69 18 8 16.31 8 13V3Z" fill="url(#trophyGrad)" stroke={color} strokeWidth="1.5"/>
-    <Path d="M4 5H8V10C8 10 6 10 5 9C4 8 4 5 4 5Z" fill={color} opacity="0.6"/>
-    <Path d="M16 5H20V10C20 10 18 10 19 9C20 8 20 5 20 5Z" fill={color} opacity="0.6"/>
-    <Rect x="10" y="18" width="4" height="3" fill={color}/>
-    <Rect x="7" y="21" width="10" height="1.5" rx="0.75" fill={color}/>
-    <Path d="M10 8L11.5 10.5L14 11L12 13L12.5 15.5L10 14L7.5 15.5L8 13L6 11L8.5 10.5L10 8Z" fill="white" opacity="0.9"/>
+    
+    {/* Dragon enroulé */}
+    <Path d="M100 40 C80 40 60 55 55 75 C50 95 60 110 80 115 C100 120 110 135 100 145 C90 155 70 155 55 145" 
+      stroke="url(#logoGrad)" strokeWidth="6" fill="none" strokeLinecap="round"/>
+    
+    {/* Tête du dragon */}
+    <Circle cx="50" cy="75" r="18" fill="url(#logoGrad)"/>
+    <Circle cx="44" cy="70" r="4" fill="#0A0A0F"/>
+    <Circle cx="44.5" cy="69" r="1.5" fill="white"/>
+    <Circle cx="56" cy="70" r="3" fill="#0A0A0F"/>
+    
+    {/* Corne */}
+    <Path d="M42 58 L38 45 L45 55" fill="url(#logoGrad)"/>
+    <Path d="M58 58 L62 45 L55 55" fill="url(#logoGrad)"/>
+    
+    {/* Flamme */}
+    <Path d="M35 80 C30 75 25 85 30 90 C35 95 40 90 35 80Z" fill="#FF4500"/>
+    
+    {/* Épée centrale */}
+    <Path d="M100 40 L100 120" stroke="url(#logoGrad)" strokeWidth="4" strokeLinecap="round"/>
+    <Path d="M85 50 L100 40 L115 50" fill="url(#logoGrad)"/>
+    <Path d="M95 120 L100 135 L105 120" fill="url(#logoGrad)"/>
+    
+    {/* Anneau du bouclier */}
+    <Circle cx="100" cy="80" r="30" stroke="url(#logoGradDark)" strokeWidth="3" fill="none"/>
+    <Circle cx="100" cy="80" r="22" stroke="#FFD700" strokeWidth="1.5" fill="none"/>
+    
+    {variant === 'full' && (
+      <>
+        <Path d="M70 150 L130 150" stroke="url(#logoGrad)" strokeWidth="3" strokeLinecap="round"/>
+        <Path d="M90 155 L110 155" stroke="url(#logoGrad)" strokeWidth="2" strokeLinecap="round"/>
+      </>
+    )}
   </Svg>
 );
+
+export default AppLogo;
